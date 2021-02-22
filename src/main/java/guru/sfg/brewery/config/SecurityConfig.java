@@ -26,14 +26,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return filer;
     }
 
-    @Bean
-    PasswordEncoder passwordEncoder() {
-        return SfgPasswordEncoderFactories.createDelegatingPasswordEncoder();
-    }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.addFilterBefore(restHeaderAuthFiler(authenticationManager()), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(restHeaderAuthFiler(authenticationManager()), UsernamePasswordAuthenticationFilter.class)
+                .csrf().disable();
 
         http.authorizeRequests(authorize -> {
             authorize.antMatchers("/", "/webjars/**", "/login", "/resources/**").permitAll()
@@ -50,15 +48,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return SfgPasswordEncoderFactories.createDelegatingPasswordEncoder();
+    }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 .withUser("spring")
-                .password("{bcrypt}$2a$10$KsYnh/zsaFNTTTfaRCjW0uExIk91acdYav.GBeYAW8j0BORVcnheO")
+                .password("{bcrypt}$2a$10$hqRrBSEZ/3d7kbhPGk5jse6AJqEYVt1LqSIlpJb52vH.RowY0tOY2")
                 .roles("ADMIN")
                 .and()
                 .withUser("user")
-                .password("{sha256}694501ade53d69a9fb21caf50ed11a7c800548bc32907078bb668ba14e379bd015223ebe0768a745")
+                .password("{sha256}ea8ce0cbbf3060ffd496546eb5b94b8ebadc8bdc837ac3e0d3cd2537cb0d8e764a80009e7e15e617")
                 .roles("USER");
 
         auth.inMemoryAuthentication().withUser("scott").password("{noop}tiger").roles("CUSTOMER");
