@@ -34,6 +34,7 @@ public class RestHeaderAuthFiler extends AbstractAuthenticationProcessingFilter 
             this.logger.debug("Request is to process authentication");
             }
 
+        // check an unAuthorized request
         try {
 
             Authentication authResult = attemptAuthentication(request, response);
