@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -64,7 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .password("{sha256}ea8ce0cbbf3060ffd496546eb5b94b8ebadc8bdc837ac3e0d3cd2537cb0d8e764a80009e7e15e617")
                 .roles("USER");
 
-        auth.inMemoryAuthentication().withUser("scott").password("{noop}tiger").roles("CUSTOMER");
+        auth.inMemoryAuthentication().withUser("scott").password("{bcrypt10}$2a$11$vfpbaZV0ASrlUo88Q7Kjj.8Rvm9qdBdlazAt0djqQjosWnzd9W4a2").roles("CUSTOMER");
     }
 
     //    @Override
