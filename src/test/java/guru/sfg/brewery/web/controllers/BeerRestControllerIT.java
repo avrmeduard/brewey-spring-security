@@ -11,7 +11,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 
 @WebMvcTest
-public class BerrRestControllerIT extends BaseIT{
+public class BeerRestControllerIT extends BaseIT{
 
     @Test
     void deleteBadCredential() throws Exception {
