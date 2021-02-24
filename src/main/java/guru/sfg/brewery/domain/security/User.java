@@ -1,9 +1,14 @@
 package guru.sfg.brewery.domain.security;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.Set;
 
-
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class User {
 
