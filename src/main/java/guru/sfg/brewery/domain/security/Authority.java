@@ -19,6 +19,5 @@ public class Authority {
     private String role;
 
     @ManyToMany(mappedBy = "authorities")
-    @JoinColumn
     private Set<User> users;
 }
