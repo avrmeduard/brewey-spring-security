@@ -9,6 +9,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 public class User {
 
@@ -25,9 +26,13 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "AUTHORITY_ID", referencedColumnName = "ID")})
     private Set<Authority> authorities;
 
+    @Builder.Default
     private Boolean accountNonExpired = true;
+    @Builder.Default
     private Boolean accountNonLocked = true;
+    @Builder.Default
     private Boolean credentialsNonExpired = true;
+    @Builder.Default
     private Boolean enable = true;
 
 }
