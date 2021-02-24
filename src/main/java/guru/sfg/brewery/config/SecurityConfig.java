@@ -46,6 +46,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin().and()
                 .httpBasic();
 
+        // h2 console config
+        http.headers().frameOptions().sameOrigin();
     }
 
     @Bean
