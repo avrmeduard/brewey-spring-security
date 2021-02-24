@@ -33,7 +33,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable();
 
         http.authorizeRequests(authorize -> {
-            authorize.antMatchers("/", "/webjars/**", "/login", "/resources/**").permitAll()
+            authorize.antMatchers("/h2-console/**").permitAll()
+                     .antMatchers("/", "/webjars/**", "/login", "/resources/**").permitAll()
                     .antMatchers("/beers/find", "/beers/**").permitAll()
                     .antMatchers(HttpMethod.GET, "/api/v1/beer/**").permitAll()
                     ./*antMatchers*/mvcMatchers(HttpMethod.GET, "/api/v1/beerUpc/{upc}").permitAll();
@@ -66,7 +67,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication().withUser("scott").password("{bcrypt10}$2a$11$vfpbaZV0ASrlUo88Q7Kjj.8Rvm9qdBdlazAt0djqQjosWnzd9W4a2").roles("CUSTOMER");
     }
 
-    //    @Override
+    //    @Override   // in memory
 //    @Bean
 //    protected UserDetailsService userDetailsService() {
 //        UserDetails admin = User.withDefaultPasswordEncoder()
