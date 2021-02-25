@@ -21,6 +21,7 @@ import java.io.IOException;
 @Slf4j
 public class RestHeaderAuthFiler extends AbstractAuthenticationProcessingFilter {
 
+
     public RestHeaderAuthFiler(RequestMatcher requiresAuthenticationRequestMatcher) {
         super(requiresAuthenticationRequestMatcher);
     }
